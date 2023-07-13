@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import React from "react";
 
 function App() {
   const [firstTeam, setFirstTeam] = useState(["na"]);
@@ -8,13 +9,8 @@ function App() {
     e.preventDefault();
     console.log(e.target.name.value);
     const newPlayer = e.target.name.value;
-    firstTeam.push(newPlayer);
-    setFirstTeam(firstTeam);
+    setFirstTeam([...firstTeam, newPlayer]);
   };
-
-  useEffect(() => {
-    console.log("UseEffect");
-  }, [firstTeam]);
 
   return (
     <div>
@@ -38,18 +34,18 @@ function App() {
       </form>
       <div>
         <ol>
-          {firstTeam != []
-            ? firstTeam.map((player) => <li key={player}>{player}</li>)
-            : null}
+          {firstTeam.map((player) => (
+            <li key={player}>{player}</li>
+          ))}
         </ol>
       </div>
-      <div>
+      {/* <div>
         <ol>
-          {firstTeam != []
-            ? secondTeam.map((player) => <li>{player}</li>)
-            : null}
+          {secondTeam.map((player) => (
+            <li>{player}</li>
+          ))}
         </ol>
-      </div>
+      </div> */}
     </div>
   );
 }
