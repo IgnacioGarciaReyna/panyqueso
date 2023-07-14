@@ -1,5 +1,6 @@
 import { useState } from "react";
 import React from "react";
+import PlayerEditor from "./Components/PlayerEditor";
 
 function App() {
   const [players, setPlayers] = useState([]);
@@ -16,6 +17,11 @@ function App() {
     setPlayers([...players, newPlayer]);
   };
 
+  const deletePlayer = (id) => {
+    const newPlayers = players.filter((player) => player.id !== id);
+    setPlayers(newPlayers);
+  };
+
   return (
     <div>
       <h1>Fulbito</h1>
@@ -28,7 +34,11 @@ function App() {
       <div>
         <ol>
           {players.map((player) => (
-            <li key={player.id}>{player.name}</li>
+            <PlayerEditor
+              player={player}
+              key={player.id}
+              deletePlayer={deletePlayer}
+            />
           ))}
         </ol>
       </div>
