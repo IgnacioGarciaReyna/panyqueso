@@ -1,6 +1,7 @@
 import { useState } from "react";
 import React from "react";
 import PlayerEditor from "./Components/PlayerEditor";
+import Team from "./Components/Team";
 
 function App() {
   const [players, setPlayers] = useState([]);
@@ -11,14 +12,18 @@ function App() {
     setPlayers([...players]);
   };
 
-  const addPlayer = (e) => {
-    e.preventDefault();
-    const newPlayer = {
-      id: e.target.name.value,
-      name: e.target.name.value,
+  const createPlayer = (playerName) => {
+    return {
+      id: playerName,
+      name: playerName,
       skills: 0,
       goalkeeper: false,
     };
+  };
+
+  const addPlayer = (e) => {
+    e.preventDefault();
+    const newPlayer = createPlayer(e.target.name.value);
     setPlayers([...players, newPlayer]);
   };
 
@@ -56,8 +61,6 @@ function App() {
 
     while (playersToProcess.length > 0) {
       const bestPlayer = bestPlayerOf(playersToProcess);
-      console.log("firstTeamPlayers skills -> " + skillsOf(firstTeamPlayers));
-      console.log("secondTeamPlayers skills -> " + skillsOf(secondTeamPlayers));
       if (skillsOf(firstTeamPlayers) > skillsOf(secondTeamPlayers)) {
         secondTeamPlayers.push(bestPlayer);
       } else {
@@ -67,6 +70,7 @@ function App() {
         (player) => player.id !== bestPlayer.id
       );
     }
+
     setFirstTeam(firstTeamPlayers);
     setSecondTeam(secondTeamPlayers);
   };
@@ -95,18 +99,8 @@ function App() {
           Armar equipos
         </button>
       </div>
-      <div>
-        <h3>Equipo 1</h3>
-        {firstTeam.map((player) => (
-          <p key={player.id}>{player.name}</p>
-        ))}
-      </div>
-      <div>
-        <h3>Equipo 2</h3>
-        {secondTeam.map((player) => (
-          <p key={player.id}>{player.name}</p>
-        ))}
-      </div>
+      <Team team={firstTeam} />
+      <Team team={secondTeam} />
     </div>
   );
 }
