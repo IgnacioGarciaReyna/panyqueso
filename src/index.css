@@ -13,6 +13,10 @@ code {
 }
 
 
+/* CONTAINER CSS */
+.container {
+  margin: 30px;
+}
 
 /* PLAYER EDITOR CSS */
 .player-editor {

@@ -76,7 +76,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Fulbito</h1>
       <form onSubmit={addPlayer}>
         <input type="text" name="name" />
