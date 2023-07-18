@@ -27,6 +27,7 @@ function App() {
   const addPlayer = (e) => {
     e.preventDefault();
     const nameNewPlayer = e.target.name.value;
+    if (nameNewPlayer === "") return;
     if (playerAlreadyExists(nameNewPlayer)) {
       setNameError(true);
     } else {
