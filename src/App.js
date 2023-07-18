@@ -2,6 +2,9 @@ import { useState } from "react";
 import React from "react";
 import PlayerEditor from "./Components/PlayerEditor";
 import Team from "./Components/Team";
+import { Button } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import SendIcon from "@mui/icons-material/Send";
 
 function App() {
   const [players, setPlayers] = useState([]);
@@ -108,10 +111,17 @@ function App() {
     <div className="container">
       <h1>Fulbito</h1>
       <form onSubmit={addPlayer}>
-        <input type="text" name="name" ref={nameInput} />
-        <button type="submit" name="submit">
+        <TextField
+          name="name"
+          id="filled-basic"
+          label="Nombre player"
+          variant="filled"
+          ref={nameInput}
+        />
+
+        <Button variant="outlined" size="small" type="submit" name="submit">
           Cargar Jugador
-        </button>
+        </Button>
       </form>
       <div>
         <ol>
@@ -125,9 +135,10 @@ function App() {
             />
           ))}
         </ol>
-        <button type="button" onClick={createTeams}>
+
+        <Button variant="outlined" endIcon={<SendIcon />} onClick={createTeams}>
           Armar equipos
-        </button>
+        </Button>
       </div>
       <Team team={firstTeam} numberTeam={1} />
       <Team team={secondTeam} numberTeam={2} />

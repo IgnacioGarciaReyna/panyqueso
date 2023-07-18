@@ -1,5 +1,7 @@
 import React from "react";
 import SkillsRating from "./SkillsRating";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const positionImages = require.context("../assets/img/", true);
 
@@ -42,9 +44,10 @@ const PlayerEditor = ({
         alt=""
         onClick={changePosition}
       />
-      <button type="button" onClick={handleDeletePlayer}>
-        X
-      </button>
+
+      <Button variant="outlined" color="error" onClick={handleDeletePlayer}>
+        <DeleteIcon />
+      </Button>
     </li>
   );
 };
