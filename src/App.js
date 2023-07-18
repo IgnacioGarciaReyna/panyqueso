@@ -102,8 +102,8 @@ function App() {
           Armar equipos
         </button>
       </div>
-      <Team team={firstTeam} />
-      <Team team={secondTeam} />
+      <Team team={firstTeam} numberTeam={1} />
+      <Team team={secondTeam} numberTeam={2} />
     </div>
   );
 }
