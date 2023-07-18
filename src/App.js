@@ -12,6 +12,8 @@ function App() {
     setPlayers([...players]);
   };
 
+  const nameInput = React.useRef();
+
   const createPlayer = (playerName) => {
     return {
       id: playerName,
@@ -24,6 +26,7 @@ function App() {
   const addPlayer = (e) => {
     e.preventDefault();
     const newPlayer = createPlayer(e.target.name.value);
+    nameInput.current.value = "";
     setPlayers([...players, newPlayer]);
   };
 
@@ -79,7 +82,7 @@ function App() {
     <div className="container">
       <h1>Fulbito</h1>
       <form onSubmit={addPlayer}>
-        <input type="text" name="name" />
+        <input type="text" name="name" ref={nameInput} />
         <button type="submit" name="submit">
           Cargar Jugador
         </button>
