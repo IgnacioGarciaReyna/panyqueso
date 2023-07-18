@@ -1,6 +1,11 @@
 import React from "react";
 
-const PlayerEditor = ({ player, deletePlayer, refreshPlayers }) => {
+const PlayerEditor = ({
+  player,
+  deletePlayer,
+  refreshPlayers,
+  gkLimitReached,
+}) => {
   const setSkill = (e) => {
     e.preventDefault();
     player.skills = parseInt(e.target.value);
@@ -12,8 +17,12 @@ const PlayerEditor = ({ player, deletePlayer, refreshPlayers }) => {
   };
 
   const changePosition = () => {
-    player.goalkeeper = !player.goalkeeper;
-    refreshPlayers();
+    if (!player.goalkeeper && gkLimitReached()) {
+      alert("Solo puede haber dos goalkeepers");
+    } else {
+      player.goalkeeper = !player.goalkeeper;
+      refreshPlayers();
+    }
   };
 
   return (

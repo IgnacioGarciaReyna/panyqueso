@@ -48,6 +48,10 @@ function App() {
     );
   };
 
+  const gkLimitReached = () => {
+    return players.filter((player) => player.goalkeeper).length >= 2;
+  };
+
   const deletePlayer = (id) => {
     const newPlayers = players.filter((player) => player.id !== id);
     setPlayers(newPlayers);
@@ -114,6 +118,7 @@ function App() {
               key={player.id}
               deletePlayer={deletePlayer}
               refreshPlayers={refreshPlayers}
+              gkLimitReached={gkLimitReached}
             />
           ))}
         </ol>
