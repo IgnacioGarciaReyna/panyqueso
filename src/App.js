@@ -7,7 +7,6 @@ function App() {
   const [players, setPlayers] = useState([]);
   const [firstTeam, setFirstTeam] = useState([]);
   const [secondTeam, setSecondTeam] = useState([]);
-  const [nameError, setNameError] = useState(false);
 
   const refreshPlayers = () => {
     setPlayers([...players]);
@@ -29,9 +28,8 @@ function App() {
     const nameNewPlayer = e.target.name.value;
     if (nameNewPlayer === "") return;
     if (playerAlreadyExists(nameNewPlayer)) {
-      setNameError(true);
+      alert("Ya existe un player con ese nombre");
     } else {
-      setNameError(false);
       const newPlayer = createPlayer(nameNewPlayer);
       resetNameInput();
       setPlayers([...players, newPlayer]);
@@ -114,7 +112,6 @@ function App() {
         <button type="submit" name="submit">
           Cargar Jugador
         </button>
-        {nameError ? <p>Ya existe un player con el mismo nombre</p> : null}
       </form>
       <div>
         <ol>
