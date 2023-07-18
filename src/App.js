@@ -79,20 +79,26 @@ function App() {
     return bestPlayer;
   };
 
+  const gkFromArray = (playersArray) => {
+    return playersArray.find((player) => player.goalkeeper);
+  };
+
   const createTeams = () => {
     let playersToProcess = [...players];
     const firstTeamPlayers = [];
     const secondTeamPlayers = [];
 
     while (playersToProcess.length > 0) {
-      const bestPlayer = bestPlayerOf(playersToProcess);
+      const playerToAdd = gkFromArray(playersToProcess)
+        ? gkFromArray(playersToProcess)
+        : bestPlayerOf(playersToProcess);
       if (skillsOf(firstTeamPlayers) > skillsOf(secondTeamPlayers)) {
-        secondTeamPlayers.push(bestPlayer);
+        secondTeamPlayers.push(playerToAdd);
       } else {
-        firstTeamPlayers.push(bestPlayer);
+        firstTeamPlayers.push(playerToAdd);
       }
       playersToProcess = playersToProcess.filter(
-        (player) => player.id !== bestPlayer.id
+        (player) => player.id !== playerToAdd.id
       );
     }
 
