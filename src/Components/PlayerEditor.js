@@ -1,4 +1,7 @@
 import React from "react";
+import SkillsRating from "./SkillsRating";
+
+const positionImages = require.context("../assets/img/", true);
 
 const PlayerEditor = ({
   player,
@@ -28,11 +31,17 @@ const PlayerEditor = ({
   return (
     <li className="player-editor" key={player.id}>
       <p>{player.name}</p>
-      <p>Skills:</p>
-      <input type="number" name="skill" min="0" max="5" onChange={setSkill} />
-      <p onClick={changePosition}>
-        {player.goalkeeper ? "Arquero" : "Jugador"}
-      </p>
+      <SkillsRating setSkill={setSkill} />
+      <img
+        className="position-icon"
+        src={
+          player.goalkeeper
+            ? positionImages("./goalkeeper.png")
+            : positionImages("./player.png")
+        }
+        alt=""
+        onClick={changePosition}
+      />
       <button type="button" onClick={handleDeletePlayer}>
         X
       </button>
