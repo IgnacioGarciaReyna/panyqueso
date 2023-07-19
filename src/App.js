@@ -40,7 +40,7 @@ function App() {
   };
 
   const resetNameInput = () => {
-    nameInput.current.value = "";
+    nameInput.current.children[1].children.name.value = "";
   };
 
   const playerAlreadyExists = (name) => {
