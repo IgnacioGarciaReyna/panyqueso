@@ -4,11 +4,11 @@ import Box from "@mui/material/Box";
 import StarIcon from "@mui/icons-material/Star";
 
 const labels = {
-  1: "Malo",
-  2: "Maso maso",
+  1: "Bajo nivel",
+  2: "Normal",
   3: "Bueno",
   4: "Muy bueno",
-  5: "Crack",
+  5: "Determinante",
 };
 
 function getLabelText(value) {
