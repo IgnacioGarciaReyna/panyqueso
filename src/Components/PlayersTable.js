@@ -23,7 +23,7 @@ export default function BasicTable({
             <TableCell align="center">Nombre</TableCell>
             <TableCell align="center">Habilidad</TableCell>
             <TableCell align="center">Posición</TableCell>
-            <TableCell align="center">Eliminar</TableCell>
+            <TableCell align="center"></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

@@ -61,7 +61,12 @@ const PlayerEditor = ({
         />
       </TableCell>
       <TableCell align="center" padding="none">
-        <Button variant="outlined" color="error" onClick={handleDeletePlayer}>
+        <Button
+          sx={{ padding: 0, minWidth: 0 }}
+          variant="outlined"
+          color="error"
+          onClick={handleDeletePlayer}
+        >
           <DeleteIcon />
         </Button>
       </TableCell>
