@@ -13,20 +13,13 @@ code {
 }
 
 
-/* CONTAINER CSS */
-.container {
-  margin: 30px;
-}
 
 /* PLAYER EDITOR CSS */
-.player-editor {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 50%;
+.table-container{
+  margin: 30px;
+  width: 45rem;
 }
 
-.position-icon{
+.position-icon {
   height: 40px;
 }

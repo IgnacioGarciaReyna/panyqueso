@@ -5,6 +5,7 @@ import Team from "./Components/Team";
 import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import SendIcon from "@mui/icons-material/Send";
+import BasicTable from "./Components/PlayersTable";
 
 function App() {
   const [players, setPlayers] = useState([]);
@@ -123,19 +124,16 @@ function App() {
           Cargar Jugador
         </Button>
       </form>
-      <div>
-        <ol>
-          {players.map((player) => (
-            <PlayerEditor
-              player={player}
-              key={player.id}
-              deletePlayer={deletePlayer}
-              refreshPlayers={refreshPlayers}
-              gkLimitReached={gkLimitReached}
-            />
-          ))}
-        </ol>
+      <div className="table-container">
+        <BasicTable
+          players={players}
+          deletePlayer={deletePlayer}
+          refreshPlayers={refreshPlayers}
+          gkLimitReached={gkLimitReached}
+        />
+      </div>
 
+      <div>
         <Button variant="outlined" endIcon={<SendIcon />} onClick={createTeams}>
           Armar equipos
         </Button>

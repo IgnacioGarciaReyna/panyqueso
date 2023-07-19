@@ -2,6 +2,8 @@ import React from "react";
 import SkillsRating from "./SkillsRating";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
+import TableCell from "@mui/material/TableCell";
+import TableRow from "@mui/material/TableRow";
 
 const positionImages = require.context("../assets/img/", true);
 
@@ -31,24 +33,34 @@ const PlayerEditor = ({
   };
 
   return (
-    <li className="player-editor" key={player.id}>
-      <p>{player.name}</p>
-      <SkillsRating setSkill={setSkill} />
-      <img
-        className="position-icon"
-        src={
-          player.goalkeeper
-            ? positionImages("./goalkeeper.png")
-            : positionImages("./player.png")
-        }
-        alt=""
-        onClick={changePosition}
-      />
-
-      <Button variant="outlined" color="error" onClick={handleDeletePlayer}>
-        <DeleteIcon />
-      </Button>
-    </li>
+    <TableRow
+      key={player.id}
+      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+    >
+      <TableCell component="th" scope="row" align="center" padding="none">
+        {player.name}
+      </TableCell>
+      <TableCell align="center" padding="none">
+        <SkillsRating setSkill={setSkill} className="setSkill"/>
+      </TableCell>
+      <TableCell align="center" padding="none">
+        <img
+          className="position-icon"
+          src={
+            player.goalkeeper
+              ? positionImages("./goalkeeper.png")
+              : positionImages("./player.png")
+          }
+          alt=""
+          onClick={changePosition}
+        />
+      </TableCell>
+      <TableCell align="center" padding="none">
+        <Button variant="outlined" color="error" onClick={handleDeletePlayer}>
+          <DeleteIcon />
+        </Button>
+      </TableCell>
+    </TableRow>
   );
 };
 

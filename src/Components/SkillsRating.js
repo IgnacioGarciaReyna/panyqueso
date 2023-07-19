@@ -22,8 +22,10 @@ export default function SkillsRating({ setSkill }) {
   return (
     <Box
       sx={{
-        width: 200,
+        width: "100%",
         display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
         alignItems: "center",
       }}
     >
@@ -41,9 +43,7 @@ export default function SkillsRating({ setSkill }) {
         }}
         emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
       />
-      {value !== null && (
-        <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
-      )}
+      {value !== null && <Box>{labels[hover !== -1 ? hover : value]}</Box>}
     </Box>
   );
 }
