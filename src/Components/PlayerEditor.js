@@ -38,10 +38,15 @@ const PlayerEditor = ({
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
       <TableCell component="th" scope="row" align="center" padding="none">
+        {player.id}
+      </TableCell>
+
+      <TableCell align="center" padding="none">
+        {" "}
         {player.name}
       </TableCell>
       <TableCell align="center" padding="none">
-        <SkillsRating setSkill={setSkill} className="setSkill"/>
+        <SkillsRating setSkill={setSkill} className="setSkill" />
       </TableCell>
       <TableCell align="center" padding="none">
         <img

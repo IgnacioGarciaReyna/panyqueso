@@ -20,7 +20,7 @@ function App() {
 
   const createPlayer = (playerName) => {
     return {
-      id: playerName,
+      id: players.length + 1,
       name: playerName,
       skills: 0,
       goalkeeper: false,

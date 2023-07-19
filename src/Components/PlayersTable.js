@@ -19,6 +19,7 @@ export default function BasicTable({
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
+            <TableCell align="center"></TableCell>
             <TableCell align="center">Nombre</TableCell>
             <TableCell align="center">Habilidad</TableCell>
             <TableCell align="center">Posición</TableCell>
