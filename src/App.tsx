@@ -8,28 +8,37 @@ import SendIcon from "@mui/icons-material/Send";
 import BasicTable from "./Components/PlayersTable";
 
 function App() {
-  const [players, setPlayers] = useState([]);
-  const [firstTeam, setFirstTeam] = useState([]);
-  const [secondTeam, setSecondTeam] = useState([]);
+  const [players, setPlayers] = useState<Array<Player>>([]);
+  const [firstTeam, setFirstTeam] = useState<Array<Player>>([]);
+  const [secondTeam, setSecondTeam] = useState<Array<Player>>([]);
 
   const refreshPlayers = () => {
     setPlayers([...players]);
   };
 
-  const nameInput = React.useRef();
+  const nameInput: any = React.useRef();
 
-  const createPlayer = (playerName) => {
-    return {
-      id: players.length + 1,
-      name: playerName,
-      skills: 0,
-      goalkeeper: false,
-    };
+  class Player {
+    id: Number;
+    name: String;
+    skills: Number;
+    goalkeeper: Boolean;
+  }
+
+  const createPlayer = (playerName: String) => {
+    const newPlayer = new Player();
+
+    newPlayer.id = players.length + 1;
+    newPlayer.name = playerName;
+    newPlayer.skills = 0;
+    newPlayer.goalkeeper = false;
+
+    return newPlayer;
   };
 
   const addPlayer = (e) => {
     e.preventDefault();
-    const nameNewPlayer = e.target.name.value;
+    const nameNewPlayer: String = e.target.name.value;
     if (nameNewPlayer === "") return;
     if (playerAlreadyExists(nameNewPlayer)) {
       alert("Ya existe un player con ese nombre");
@@ -44,24 +53,24 @@ function App() {
     nameInput.current.children[1].children.name.value = "";
   };
 
-  const playerAlreadyExists = (name) => {
+  const playerAlreadyExists = (name: String) => {
     return players.find(
-      (player) => player.name.toUpperCase() === name.toUpperCase()
+      (player: Player) => player.name.toUpperCase() === name.toUpperCase()
     );
   };
 
   const gkLimitReached = () => {
-    return players.filter((player) => player.goalkeeper).length >= 2;
+    return players.filter((player: Player) => player.goalkeeper).length >= 2;
   };
 
-  const deletePlayer = (id) => {
-    const newPlayers = players.filter((player) => player.id !== id);
+  const deletePlayer = (id: Number) => {
+    const newPlayers = players.filter((player: Player) => player.id !== id);
     setPlayers(newPlayers);
   };
 
   const skillsOf = (team) => {
     if (team.length > 0) {
-      return team.reduce((accumulator, player) => {
+      return team.reduce((accumulator, player: Player) => {
         return accumulator + player.skills;
       }, 0);
     } else {
@@ -71,27 +80,27 @@ function App() {
 
   const bestPlayerOf = (playersToProcess) => {
     let maxSkill = playersToProcess
-      .map((player) => player.skills)
+      .map((player: Player) => player.skills)
       .reduce((a, b) => {
         return Math.max(a, b);
       });
     const bestPlayer = playersToProcess.find(
-      (player) => player.skills == maxSkill
+      (player: Player) => player.skills == maxSkill
     );
     return bestPlayer;
   };
 
-  const gkFromArray = (playersArray) => {
+  const gkFromArray = (playersArray: Array<Player>) => {
     return playersArray.find((player) => player.goalkeeper);
   };
 
   const createTeams = () => {
-    let playersToProcess = [...players];
-    const firstTeamPlayers = [];
-    const secondTeamPlayers = [];
+    let playersToProcess: Array<Player> = [...players];
+    const firstTeamPlayers: Array<Player> = [];
+    const secondTeamPlayers: Array<Player> = [];
 
     while (playersToProcess.length > 0) {
-      const playerToAdd = gkFromArray(playersToProcess)
+      const playerToAdd: Player = gkFromArray(playersToProcess)
         ? gkFromArray(playersToProcess)
         : bestPlayerOf(playersToProcess);
       if (skillsOf(firstTeamPlayers) > skillsOf(secondTeamPlayers)) {
@@ -111,7 +120,7 @@ function App() {
   return (
     <div className="container">
       <h1>Fulbito</h1>
-      <form onSubmit={addPlayer}>
+      <form className="form-submit-player" onSubmit={addPlayer}>
         <TextField
           name="name"
           id="filled-basic"
