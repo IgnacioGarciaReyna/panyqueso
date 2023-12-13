@@ -2,7 +2,7 @@ import React from "react";
 
 const Team = ({ team, numberTeam }) => {
   return (
-    <div>
+    <div className="team">
       {team.length > 0 ? (
         <div>
           <h3>Equipo {numberTeam}</h3>

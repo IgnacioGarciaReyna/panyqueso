@@ -33,3 +33,16 @@ code {
 .form-submit-player{
   display: flex;
 }
+
+/* TEAMS CONTAINER */
+.teams-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* TEAM */
+.team{
+  width: 30%;
+}

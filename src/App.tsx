@@ -43,10 +43,14 @@ function App() {
     if (playerAlreadyExists(nameNewPlayer)) {
       alert("Ya existe un player con ese nombre");
     } else {
-      const newPlayer = createPlayer(nameNewPlayer);
+      const newPlayer = createPlayer(capitalizeFirstLetter(nameNewPlayer));
       resetNameInput();
       setPlayers([...players, newPlayer]);
     }
+  };
+
+  const capitalizeFirstLetter = (name: String) => {
+    return name.charAt(0).toUpperCase() + name.slice(1);
   };
 
   const resetNameInput = () => {
@@ -147,8 +151,10 @@ function App() {
           Armar equipos
         </Button>
       </div>
-      <Team team={firstTeam} numberTeam={1} />
-      <Team team={secondTeam} numberTeam={2} />
+      <div className="teams-container">
+        <Team team={firstTeam} numberTeam={1} />
+        <Team team={secondTeam} numberTeam={2} />
+      </div>
     </div>
   );
 }
