@@ -3,20 +3,11 @@ import Team from "./Team.tsx";
 import { Player } from "../Classes/Player.tsx";
 import { Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import { TeamClass } from "../Classes/TeamsClass.tsx";
 
 const Match = ({ players }) => {
-  const [firstTeam, setFirstTeam] = useState<Array<Player>>([]);
-  const [secondTeam, setSecondTeam] = useState<Array<Player>>([]);
-
-  const skillsOf = (team) => {
-    if (team.length > 0) {
-      return team.reduce((accumulator, player: Player) => {
-        return accumulator + player.skills;
-      }, 0);
-    } else {
-      return 0;
-    }
-  };
+  const [firstTeam, setFirstTeam] = useState<TeamClass>();
+  const [secondTeam, setSecondTeam] = useState<TeamClass>();
 
   const bestPlayerOf = (playersToProcess) => {
     let maxSkill = playersToProcess
@@ -25,7 +16,7 @@ const Match = ({ players }) => {
         return Math.max(a, b);
       });
     const bestPlayer = playersToProcess.find(
-      (player: Player) => player.skills == maxSkill
+      (player: Player) => player.skills === maxSkill
     );
     return bestPlayer;
   };
@@ -39,24 +30,34 @@ const Match = ({ players }) => {
   };
 
   const createTeams = () => {
+    const firstTeamPlayers = new TeamClass();
+    const secondTeamPlayers = new TeamClass();
+
     let playersToProcess: Array<Player> = [...players];
     shufflePlayers(playersToProcess);
-    const firstTeamPlayers: Array<Player> = [];
-    const secondTeamPlayers: Array<Player> = [];
 
     while (playersToProcess.length > 0) {
+      //Si es arquero, uso al arquero, si no al mejor de la lista
+      //Arqueros: es necesario separarlos al principio? Está bien que solo pueda haber dos? Si estuviera mal debería agregarse como una habilidad como por ej goleador, rápido, arquero, etc es un jugador que tiene la posibilidad de atajar pero no es arquero fijo
       const playerToAdd: Player = gkFromArray(playersToProcess)
         ? gkFromArray(playersToProcess)
         : bestPlayerOf(playersToProcess);
-      if (skillsOf(firstTeamPlayers) > skillsOf(secondTeamPlayers)) {
-        secondTeamPlayers.push(playerToAdd);
+
+      //Agregar al team con menos skills
+      if (firstTeamPlayers.skills() > secondTeamPlayers.skills()) {
+        secondTeamPlayers.addPlayer(playerToAdd);
       } else {
-        firstTeamPlayers.push(playerToAdd);
+        firstTeamPlayers.addPlayer(playerToAdd);
       }
+
+      //Quitar player
       playersToProcess = playersToProcess.filter(
         (player) => player.id !== playerToAdd.id
       );
     }
+
+    //Crear una función para nivelar los equipos.
+    //Si hay mucha diferencia, se debería pasar un jugador de equipo, probablemente una normal por uno malo
 
     setFirstTeam(firstTeamPlayers);
     setSecondTeam(secondTeamPlayers);

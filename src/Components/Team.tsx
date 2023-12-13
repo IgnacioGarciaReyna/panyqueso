@@ -3,10 +3,11 @@ import React from "react";
 const Team = ({ team, numberTeam }) => {
   return (
     <div className="team">
-      {team.length > 0 ? (
+      {team !== undefined ? (
         <div>
           <h3>Equipo {numberTeam}</h3>
-          {team.map((player) => (
+          <h4>Skills: {team.skills()}</h4>
+          {team.playersOfTheTeam().map((player) => (
             <p key={player.id}>{player.name}</p>
           ))}
         </div>

@@ -1,11 +1,15 @@
 export class Player {
   constructor() {
-    this.skills = 0;
+    this.skills = 2;
     this.goalkeeper = false;
   }
 
-  id: Number;
+  id: number;
   name: String;
-  skills: Number;
+  skills: number;
   goalkeeper: Boolean;
+
+  public equalSkill(otherPlayer: Player) {
+    //Compara con otro jugador a ver si son del mismo tipo (rápido, goleador, defensor)
+  }
 }
