@@ -34,8 +34,13 @@ const Match = ({ players }) => {
     return playersArray.find((player) => player.goalkeeper);
   };
 
+  const shufflePlayers = (players: Array<Player>) => {
+    players.sort(() => Math.random() - 0.5);
+  };
+
   const createTeams = () => {
     let playersToProcess: Array<Player> = [...players];
+    shufflePlayers(playersToProcess);
     const firstTeamPlayers: Array<Player> = [];
     const secondTeamPlayers: Array<Player> = [];
 
