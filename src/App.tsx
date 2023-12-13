@@ -1,16 +1,15 @@
 import { useState } from "react";
 import React from "react";
 import PlayerEditor from "./Components/PlayerEditor";
-import Team from "./Components/Team";
 import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import SendIcon from "@mui/icons-material/Send";
+
 import BasicTable from "./Components/PlayersTable";
+import Match from "./Components/Match.tsx";
+import { Player } from "./Classes/Player.tsx";
 
 function App() {
   const [players, setPlayers] = useState<Array<Player>>([]);
-  const [firstTeam, setFirstTeam] = useState<Array<Player>>([]);
-  const [secondTeam, setSecondTeam] = useState<Array<Player>>([]);
 
   const refreshPlayers = () => {
     setPlayers([...players]);
@@ -18,20 +17,11 @@ function App() {
 
   const nameInput: any = React.useRef();
 
-  class Player {
-    id: Number;
-    name: String;
-    skills: Number;
-    goalkeeper: Boolean;
-  }
-
   const createPlayer = (playerName: String) => {
     const newPlayer = new Player();
 
     newPlayer.id = players.length + 1;
     newPlayer.name = playerName;
-    newPlayer.skills = 0;
-    newPlayer.goalkeeper = false;
 
     return newPlayer;
   };
@@ -72,55 +62,6 @@ function App() {
     setPlayers(newPlayers);
   };
 
-  const skillsOf = (team) => {
-    if (team.length > 0) {
-      return team.reduce((accumulator, player: Player) => {
-        return accumulator + player.skills;
-      }, 0);
-    } else {
-      return 0;
-    }
-  };
-
-  const bestPlayerOf = (playersToProcess) => {
-    let maxSkill = playersToProcess
-      .map((player: Player) => player.skills)
-      .reduce((a, b) => {
-        return Math.max(a, b);
-      });
-    const bestPlayer = playersToProcess.find(
-      (player: Player) => player.skills == maxSkill
-    );
-    return bestPlayer;
-  };
-
-  const gkFromArray = (playersArray: Array<Player>) => {
-    return playersArray.find((player) => player.goalkeeper);
-  };
-
-  const createTeams = () => {
-    let playersToProcess: Array<Player> = [...players];
-    const firstTeamPlayers: Array<Player> = [];
-    const secondTeamPlayers: Array<Player> = [];
-
-    while (playersToProcess.length > 0) {
-      const playerToAdd: Player = gkFromArray(playersToProcess)
-        ? gkFromArray(playersToProcess)
-        : bestPlayerOf(playersToProcess);
-      if (skillsOf(firstTeamPlayers) > skillsOf(secondTeamPlayers)) {
-        secondTeamPlayers.push(playerToAdd);
-      } else {
-        firstTeamPlayers.push(playerToAdd);
-      }
-      playersToProcess = playersToProcess.filter(
-        (player) => player.id !== playerToAdd.id
-      );
-    }
-
-    setFirstTeam(firstTeamPlayers);
-    setSecondTeam(secondTeamPlayers);
-  };
-
   return (
     <div className="container">
       <h1>Fulbito</h1>
@@ -145,16 +86,7 @@ function App() {
           gkLimitReached={gkLimitReached}
         />
       </div>
-
-      <div>
-        <Button variant="outlined" endIcon={<SendIcon />} onClick={createTeams}>
-          Armar equipos
-        </Button>
-      </div>
-      <div className="teams-container">
-        <Team team={firstTeam} numberTeam={1} />
-        <Team team={secondTeam} numberTeam={2} />
-      </div>
+      <Match players={players} />
     </div>
   );
 }
