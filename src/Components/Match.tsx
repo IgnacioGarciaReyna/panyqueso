@@ -3,64 +3,46 @@ import Team from "./Team.tsx";
 import { Player } from "../Classes/Player.tsx";
 import { Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import { TeamClass } from "../Classes/TeamsClass.tsx";
+import { TeamClass } from "../Classes/TeamClass.tsx";
+import { PlayersList } from "../Classes/PlayersList.tsx";
 
 const Match = ({ players }) => {
   const [firstTeam, setFirstTeam] = useState<TeamClass>();
   const [secondTeam, setSecondTeam] = useState<TeamClass>();
 
-  const bestPlayerOf = (playersToProcess) => {
-    let maxSkill = playersToProcess
-      .map((player: Player) => player.skills)
-      .reduce((a: number, b: number) => {
-        return Math.max(a, b);
-      });
-    const bestPlayer = playersToProcess.find(
-      (player: Player) => player.skills === maxSkill
-    );
-    return bestPlayer;
-  };
-
-  const gkFromArray = (playersArray: Array<Player>) => {
-    return playersArray.find((player) => player.goalkeeper);
-  };
-
-  const shufflePlayers = (players: Array<Player>) => {
-    players.sort(() => Math.random() - 0.5);
-  };
-
   const createTeams = () => {
-    const firstTeamPlayers = new TeamClass();
-    const secondTeamPlayers = new TeamClass();
+    const firstTeam = new TeamClass();
+    const secondTeam = new TeamClass();
 
-    let playersToProcess: Array<Player> = [...players];
-    shufflePlayers(playersToProcess);
+    firstTeam.setTeamNumber(1);
+    secondTeam.setTeamNumber(2);
 
-    while (playersToProcess.length > 0) {
+    const playersList: PlayersList = new PlayersList();
+    players.forEach((player: Player) => playersList.addPlayer(player));
+    playersList.shufflePlayers();
+
+    while (playersList.getPlayers().length > 0) {
       //Si es arquero, uso al arquero, si no al mejor de la lista
       //Arqueros: es necesario separarlos al principio? Está bien que solo pueda haber dos? Si estuviera mal debería agregarse como una habilidad como por ej goleador, rápido, arquero, etc es un jugador que tiene la posibilidad de atajar pero no es arquero fijo
-      const playerToAdd: Player = gkFromArray(playersToProcess)
-        ? gkFromArray(playersToProcess)
-        : bestPlayerOf(playersToProcess);
+
+      const playerToAdd: Player = playersList.firstPlayerToAdd();
 
       //Agregar al team con menos skills
-      if (firstTeamPlayers.skills() > secondTeamPlayers.skills()) {
-        secondTeamPlayers.addPlayer(playerToAdd);
+      if (firstTeam.skills() > secondTeam.skills()) {
+        secondTeam.addPlayer(playerToAdd);
       } else {
-        firstTeamPlayers.addPlayer(playerToAdd);
+        firstTeam.addPlayer(playerToAdd);
       }
 
       //Quitar player
-      playersToProcess = playersToProcess.filter(
-        (player) => player.id !== playerToAdd.id
-      );
+      playersList.deletePlayer(playerToAdd);
     }
 
     //Crear una función para nivelar los equipos.
     //Si hay mucha diferencia, se debería pasar un jugador de equipo, probablemente una normal por uno malo
 
-    setFirstTeam(firstTeamPlayers);
-    setSecondTeam(secondTeamPlayers);
+    setFirstTeam(firstTeam);
+    setSecondTeam(secondTeam);
   };
 
   return (
@@ -69,8 +51,8 @@ const Match = ({ players }) => {
         Armar equipos
       </Button>
       <div className="teams-container">
-        <Team team={firstTeam} numberTeam={1} />
-        <Team team={secondTeam} numberTeam={2} />
+        <Team team={firstTeam} />
+        <Team team={secondTeam} />
       </div>
     </div>
   );

@@ -1,13 +1,14 @@
 import React from "react";
+import { Player } from "../Classes/Player";
 
-const Team = ({ team, numberTeam }) => {
+const Team = ({ team }) => {
   return (
     <div className="team">
       {team !== undefined ? (
         <div>
-          <h3>Equipo {numberTeam}</h3>
+          <h3>Equipo {team.getTeamNumber()}</h3>
           <h4>Skills: {team.skills()}</h4>
-          {team.playersOfTheTeam().map((player) => (
+          {team.getPlayers().map((player: Player) => (
             <p key={player.id}>{player.name}</p>
           ))}
         </div>

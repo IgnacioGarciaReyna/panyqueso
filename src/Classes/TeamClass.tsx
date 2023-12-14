@@ -1,9 +1,8 @@
 import { Player } from "./Player";
 
 export class TeamClass {
-  constructor() {}
-
   private players: Array<Player> = [];
+  private teamNumber: number;
 
   public skills() {
     if (this.players.length > 0) {
@@ -15,11 +14,19 @@ export class TeamClass {
     }
   }
 
+  public getTeamNumber(): number {
+    return this.teamNumber;
+  }
+
+  public setTeamNumber(number: number) {
+    this.teamNumber = number;
+  }
+
   public addPlayer(player: Player) {
     this.players.push(player);
   }
 
-  public playersOfTheTeam() {
+  public getPlayers() {
     return this.players;
   }
 }
