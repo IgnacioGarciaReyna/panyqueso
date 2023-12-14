@@ -1,6 +1,6 @@
 import { Player } from "./Player";
 
-export class PlayersList {
+export class PlayersListClass {
   private players: Array<Player> = [];
 
   public addPlayer(player: Player) {

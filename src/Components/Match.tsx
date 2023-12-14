@@ -4,7 +4,7 @@ import { Player } from "../Classes/Player.tsx";
 import { Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { TeamClass } from "../Classes/TeamClass.tsx";
-import { PlayersList } from "../Classes/PlayersList.tsx";
+import { PlayersListClass } from "../Classes/PlayersListClass.tsx";
 
 const Match = ({ players }) => {
   const [firstTeam, setFirstTeam] = useState<TeamClass>();
@@ -17,7 +17,7 @@ const Match = ({ players }) => {
     firstTeam.setTeamNumber(1);
     secondTeam.setTeamNumber(2);
 
-    const playersList: PlayersList = new PlayersList();
+    const playersList: PlayersListClass = new PlayersListClass();
     players.forEach((player: Player) => playersList.addPlayer(player));
     playersList.shufflePlayers();
 
