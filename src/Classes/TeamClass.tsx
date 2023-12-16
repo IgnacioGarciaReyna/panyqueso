@@ -22,10 +22,6 @@ export class TeamClass {
     return this.teamNumber;
   }
 
-  public setTeamNumber(number: number) {
-    this.teamNumber = number;
-  }
-
   public addPlayer(player: Player) {
     this.players.push(player);
   }

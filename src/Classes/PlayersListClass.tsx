@@ -2,7 +2,7 @@ import { Player } from "./Player";
 
 export class PlayersListClass {
   private players: Array<Player> = [];
-  public nextIDForPlayer: number = 0;
+  public nextIDForPlayer: number = 1;
 
   public addPlayer(player: Player) {
     this.players.push(player);
@@ -50,9 +50,9 @@ export class PlayersListClass {
   }
 
   public removePlayer(idToDelete: number) {
-    return (this.players = this.players.filter(
+    this.players = this.players = this.players.filter(
       (player) => player.getId() !== idToDelete
-    ));
+    );
   }
 
   public firstPlayerToAdd(): Player {
