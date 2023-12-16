@@ -7,29 +7,20 @@ import TableRow from "@mui/material/TableRow";
 
 const positionImages = require.context("../assets/img/", true);
 
-const PlayerEditor = ({
-  player,
-  deletePlayer,
-  refreshPlayers,
-  gkLimitReached,
-}) => {
+const PlayerEditor = ({ player, removePlayerFromList, refreshPlayers }) => {
   const setSkill = (e) => {
     e.preventDefault();
     player.skills = parseInt(e.target.value);
     refreshPlayers();
   };
 
-  const handleDeletePlayer = () => {
-    deletePlayer(player.id);
+  const handleRemovePlayer = () => {
+    removePlayerFromList(player.getId());
   };
 
   const changePosition = () => {
-    if (!player.goalkeeper && gkLimitReached()) {
-      alert("Solo puede haber dos goalkeepers");
-    } else {
-      player.goalkeeper = !player.goalkeeper;
-      refreshPlayers();
-    }
+    player.goalkeeper = !player.goalkeeper;
+    refreshPlayers();
   };
 
   return (
@@ -46,7 +37,7 @@ const PlayerEditor = ({
         {player.name}
       </TableCell>
       <TableCell align="center" padding="none">
-        <SkillsRating setSkill={setSkill} className="setSkill" />
+        <SkillsRating className="setSkill" setSkill={setSkill}  />
       </TableCell>
       <TableCell align="center" padding="none">
         <img
@@ -65,7 +56,7 @@ const PlayerEditor = ({
           sx={{ padding: 0, minWidth: 0 }}
           variant="outlined"
           color="error"
-          onClick={handleDeletePlayer}
+          onClick={handleRemovePlayer}
         >
           <DeleteIcon />
         </Button>

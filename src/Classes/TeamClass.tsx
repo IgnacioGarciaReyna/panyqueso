@@ -1,6 +1,10 @@
 import { Player } from "./Player";
 
 export class TeamClass {
+  constructor(teamNumber: number) {
+    this.teamNumber = teamNumber;
+  }
+
   private players: Array<Player> = [];
   private teamNumber: number;
 

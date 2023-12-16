@@ -6,14 +6,15 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import PlayerEditor from "./PlayerEditor";
+import PlayerEditor from "./PlayerEditor.tsx";
+import { Player } from "../Classes/Player";
 
-export default function BasicTable({
-  players,
-  deletePlayer,
-  refreshPlayers,
-  gkLimitReached,
-}) {
+export default function BasicTable({ players, refreshPlayers }) {
+  const removePlayerFromList = (id: number) => {
+    players.removePlayer(id);
+    refreshPlayers();
+  };
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -27,12 +28,11 @@ export default function BasicTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {players.map((player) => (
+          {players.getPlayers().map((player: Player) => (
             <PlayerEditor
               player={player}
-              deletePlayer={deletePlayer}
+              removePlayerFromList={removePlayerFromList}
               refreshPlayers={refreshPlayers}
-              gkLimitReached={gkLimitReached}
             />
           ))}
         </TableBody>

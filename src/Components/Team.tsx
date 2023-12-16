@@ -9,7 +9,7 @@ const Team = ({ team }) => {
           <h3>Equipo {team.getTeamNumber()}</h3>
           <h4>Skills: {team.skills()}</h4>
           {team.getPlayers().map((player: Player) => (
-            <p key={player.id}>{player.name}</p>
+            <p key={player.getId()}>{player.name}</p>
           ))}
         </div>
       ) : null}
