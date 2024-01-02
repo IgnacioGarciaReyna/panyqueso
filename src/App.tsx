@@ -1,11 +1,14 @@
 import { useState } from "react";
 import React from "react";
+import Icon from "@mui/material/Icon";
 import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Match from "./Components/Match.tsx";
 import { Player } from "./Classes/Player.tsx";
 import PlayerList from "./Components/PlayerList.tsx";
 import { PlayersListClass } from "./Classes/PlayersListClass.tsx";
+import { green } from "@mui/material/colors";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 function App() {
   const [players, setPlayers] = useState<PlayersListClass>(
@@ -18,7 +21,7 @@ function App() {
     e.preventDefault();
 
     const nameNewPlayer: String = e.target.name.value;
-    
+
     if (nameNewPlayer === "") {
       alert("Por favor, ingresá un nombre");
     } else if (players.hasPlayer(nameNewPlayer)) {
@@ -45,19 +48,21 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Fulbito</h1>
+      <h1 className="app-title">ARMÁTELOS</h1>
       <form className="form-submit-player" onSubmit={handleSubmit}>
         <TextField
           name="name"
           id="filled-basic"
           label="Nombre player"
           variant="filled"
+          color="success"
           ref={nameInput}
         />
-
-        <Button variant="outlined" size="small" type="submit" name="submit">
-          Cargar Jugador
-        </Button>
+        <button className="add-button" type="submit" name="submit">
+          <Icon sx={{ color: green["A700"] }}>
+            <AddCircleIcon />
+          </Icon>
+        </button>
       </form>
 
       <PlayerList players={players} setPlayers={setPlayers} />

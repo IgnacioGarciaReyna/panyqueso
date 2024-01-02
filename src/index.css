@@ -1,4 +1,9 @@
+:root {
+  --text-color: white;
+}
+
 body {
+  color: var(--text-color);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -20,8 +25,35 @@ code {
   justify-content: center;
 }
 
+.app-title {
+  color: var(--text-color);
+}
+
+.MuiFormLabel-root {
+  color: var(--text-color) !important;
+}
+
+.MuiPaper-root {
+  background-color: #242424 !important;
+
+}
+
+.MuiTableCell-root {
+  color: var(--text-color) !important;
+}
+
+.add-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.create-button {
+  border: 1px solid #00c853 !important;
+}
+
 /* PLAYER EDITOR CSS */
-.table-container{
+.table-container {
   margin: 30px;
   width: 45rem;
 }
@@ -31,12 +63,12 @@ code {
 }
 
 /* PLAYER FORM */
-.form-submit-player{
+.form-submit-player {
   display: flex;
 }
 
 /* TEAMS CONTAINER */
-.teams-container{
+.teams-container {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -44,6 +76,6 @@ code {
 }
 
 /* TEAM */
-.team{
+.team {
   width: 30%;
 }

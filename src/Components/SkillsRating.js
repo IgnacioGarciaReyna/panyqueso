@@ -2,6 +2,7 @@ import * as React from "react";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import StarIcon from "@mui/icons-material/Star";
+import { styled } from "@mui/material/styles";
 
 const labels = {
   1: "Bajo nivel",
@@ -10,6 +11,15 @@ const labels = {
   4: "Muy bueno",
   5: "Determinante",
 };
+
+const StyledRating = styled(Rating)({
+  "& .MuiRating-iconFilled": {
+    color: "#59e961",
+  },
+  "& .MuiRating-iconHover": {
+    color: "#59e961",
+  },
+});
 
 function getLabelText(value) {
   return `${value} Star${value !== 1 ? "s" : ""}, ${labels[value]}`;
@@ -29,7 +39,7 @@ export default function SkillsRating({ setSkill }) {
         alignItems: "center",
       }}
     >
-      <Rating
+      <StyledRating
         name="hover-feedback"
         value={value}
         precision={1}

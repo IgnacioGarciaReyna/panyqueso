@@ -37,9 +37,9 @@ const PlayerEditor = ({ player, removePlayerFromList, refreshPlayers }) => {
         {player.name}
       </TableCell>
       <TableCell align="center" padding="none">
-        <SkillsRating className="setSkill" setSkill={setSkill}  />
+        <SkillsRating className="setSkill" setSkill={setSkill} />
       </TableCell>
-      <TableCell align="center" padding="none">
+      {/* <TableCell align="center" padding="none">
         <img
           className="position-icon"
           src={
@@ -50,11 +50,10 @@ const PlayerEditor = ({ player, removePlayerFromList, refreshPlayers }) => {
           alt=""
           onClick={changePosition}
         />
-      </TableCell>
+      </TableCell> */}
       <TableCell align="center" padding="none">
         <Button
           sx={{ padding: 0, minWidth: 0 }}
-          variant="outlined"
           color="error"
           onClick={handleRemovePlayer}
         >
