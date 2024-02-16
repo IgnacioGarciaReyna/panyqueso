@@ -9,7 +9,7 @@ const labels = {
   2: "Normal",
   3: "Bueno",
   4: "Muy bueno",
-  5: "Determinante",
+  5: "Crack",
 };
 
 const StyledRating = styled(Rating)({
