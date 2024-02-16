@@ -52,6 +52,11 @@ code {
   border: 1px solid #00c853 !important;
 }
 
+/* INPUT NAMES */
+input {
+  color: white !important;
+}
+
 /* PLAYER EDITOR CSS */
 .table-container {
   margin: 30px;
