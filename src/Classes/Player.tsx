@@ -15,6 +15,10 @@ export class Player {
     return this.id;
   }
 
+  public setId(newID: number){
+    this.id = newID;
+  }
+
   public equalSkill(otherPlayer: Player) {
     //Compara con otro jugador a ver si son del mismo tipo (rápido, goleador, defensor)
   }

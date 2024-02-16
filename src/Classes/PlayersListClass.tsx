@@ -10,9 +10,13 @@ export class PlayersListClass {
 
   public copyPlayersList() {
     const newPlayersList = new PlayersListClass();
-
-    this.players.forEach((player) => newPlayersList.addPlayer(player));
-    newPlayersList.nextIDForPlayer = this.nextIDForPlayer;
+    this.nextIDForPlayer = 1;
+    for (let i = 0; i < this.players.length; i++) {
+      this.players[i].setId(this.nextIDForPlayer);
+      newPlayersList.addPlayer(this.players[i]);
+      newPlayersList.nextIDForPlayer = this.nextIDForPlayer;
+      this.nextIDForPlayer++;
+    }
 
     return newPlayersList;
   }
@@ -50,7 +54,7 @@ export class PlayersListClass {
   }
 
   public removePlayer(idToDelete: number) {
-    this.players = this.players = this.players.filter(
+    this.players = this.players.filter(
       (player) => player.getId() !== idToDelete
     );
   }
@@ -69,5 +73,15 @@ export class PlayersListClass {
     const id = this.nextIDForPlayer;
     this.nextIDForPlayer++;
     return id;
+  }
+
+  public resetIDs() {
+    this.nextIDForPlayer = 1;
+    // this.players.forEach((player) => player.setId(this.newIDForPlayer()));
+
+    for (let i = 0; i < this.players.length; i++) {
+      this.players[i].setId(this.nextIDForPlayer);
+      this.nextIDForPlayer++;
+    }
   }
 }

@@ -48,7 +48,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1 className="app-title">ARMÁTELOS</h1>
+      <h1 className="app-title">ARMATE LOS TEAMS</h1>
       <form className="form-submit-player" onSubmit={handleSubmit}>
         <TextField
           name="name"
