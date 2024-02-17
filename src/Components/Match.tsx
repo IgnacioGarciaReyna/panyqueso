@@ -20,6 +20,7 @@ const Match = ({ players }) => {
   return (
     <div className="match-container">
       <Button
+        disabled={!players.hasSomePlayer()}
         className="create-button"
         variant="outlined"
         sx={{
@@ -33,6 +34,7 @@ const Match = ({ players }) => {
       >
         Armar equipos
       </Button>
+
       <div className="teams-container">
         <Team team={firstTeam} />
         <Team team={secondTeam} />

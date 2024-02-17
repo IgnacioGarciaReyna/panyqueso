@@ -15,11 +15,12 @@ export default function PlayersTable({ players, refreshPlayers }) {
     refreshPlayers();
   };
 
-  return (
+  return players.hasSomePlayer() ? (
     <TableContainer component={Paper}>
-      <Table 
-      // sx={{ minWidth: 650 }} 
-      aria-label="simple table">
+      <Table
+        // sx={{ minWidth: 650 }}
+        aria-label="simple table"
+      >
         <TableHead>
           <TableRow>
             <TableCell align="center"></TableCell>
@@ -40,5 +41,7 @@ export default function PlayersTable({ players, refreshPlayers }) {
         </TableBody>
       </Table>
     </TableContainer>
+  ) : (
+    <p>Todavía no agregaste ningún player...</p>
   );
 }
