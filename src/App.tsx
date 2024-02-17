@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
 import Icon from "@mui/material/Icon";
-import { Button } from "@mui/material";
+import { Button, Container } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Match from "./Components/Match.tsx";
 import { Player } from "./Classes/Player.tsx";
@@ -47,7 +47,7 @@ function App() {
   };
 
   return (
-    <div className="container">
+    <Container>
       <h1 className="app-title">ARMATE LOS TEAMS</h1>
       <form className="form-submit-player" onSubmit={handleSubmit}>
         <TextField
@@ -68,7 +68,7 @@ function App() {
       <PlayerList players={players} setPlayers={setPlayers} />
 
       <Match players={players} />
-    </div>
+    </Container>
   );
 }
 

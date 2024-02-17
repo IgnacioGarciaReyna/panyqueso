@@ -9,7 +9,7 @@ import Paper from "@mui/material/Paper";
 import PlayerEditor from "./PlayerEditor.tsx";
 import { Player } from "../Classes/Player";
 
-export default function BasicTable({ players, refreshPlayers }) {
+export default function PlayersTable({ players, refreshPlayers }) {
   const removePlayerFromList = (id: number) => {
     players.removePlayer(id);
     refreshPlayers();
@@ -17,7 +17,9 @@ export default function BasicTable({ players, refreshPlayers }) {
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table 
+      // sx={{ minWidth: 650 }} 
+      aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell align="center"></TableCell>

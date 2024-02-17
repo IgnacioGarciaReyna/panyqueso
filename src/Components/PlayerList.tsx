@@ -1,16 +1,12 @@
 import React from "react";
-import BasicTable from "./PlayersTable.tsx";
+import PlayersTable from "./PlayersTable.tsx";
 
 const PlayerList = ({ players, setPlayers }) => {
   const refreshPlayers = () => {
     setPlayers(players.copyPlayersList());
   };
 
-  return (
-    <div className="table-container">
-      <BasicTable players={players} refreshPlayers={refreshPlayers} />
-    </div>
-  );
+  return <PlayersTable players={players} refreshPlayers={refreshPlayers} />;
 };
 
 export default PlayerList;
