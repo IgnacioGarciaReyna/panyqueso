@@ -18,6 +18,10 @@ export class TeamClass {
     }
   }
 
+  public averageSkill() {
+    return this.skills() / this.players.length;
+  }
+
   public getTeamNumber(): number {
     return this.teamNumber;
   }

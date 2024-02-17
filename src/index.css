@@ -82,7 +82,18 @@ input {
 
 /* TEAM */
 .team {
-  width: 30%;
+  
+}
+
+.team-container{
+  margin: 0 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: rgb(32, 32, 32) 1px solid;
+  border-radius: 1%;
 }
 
 

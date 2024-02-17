@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Team from "./Team.tsx";
 import { Box, Button, Modal } from "@mui/material";
 import { green } from "@mui/material/colors";
-import ReplayIcon from '@mui/icons-material/Replay';
+import ReplayIcon from "@mui/icons-material/Replay";
 
 const style = {
   position: "absolute" as "absolute",
@@ -10,9 +10,9 @@ const style = {
   left: "50%",
   bgcolor: "black",
   transform: "translate(-50%, -50%)",
-  width: "90%",
   border: "2px solid #000",
   boxShadow: 24,
+  padding: "35px 40px 0 40px" ,
 };
 
 const TeamsModal = ({ firstTeam, secondTeam, open, setOpen, createTeams }) => {
