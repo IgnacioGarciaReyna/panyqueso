@@ -43,6 +43,7 @@ const Match = ({ players }) => {
         secondTeam={secondTeam}
         open={open}
         setOpen={setOpen}
+        createTeams={createTeams}
       />
     </Container>
   );

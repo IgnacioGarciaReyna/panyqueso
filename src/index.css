@@ -87,6 +87,15 @@ input {
 
 
 /* MATCH CONTAINER */
-.match-container{
+.match-container {
   margin-top: 30px;
+}
+
+/* BUTTON MODAL */
+.button-resort-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
 }

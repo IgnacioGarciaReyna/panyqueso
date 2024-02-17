@@ -1,10 +1,21 @@
 import React, { useState } from "react";
 import Team from "./Team.tsx";
 import { Box, Button, Modal } from "@mui/material";
+import { green } from "@mui/material/colors";
+import ReplayIcon from '@mui/icons-material/Replay';
 
-const style = {};
+const style = {
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  bgcolor: "black",
+  transform: "translate(-50%, -50%)",
+  width: "90%",
+  border: "2px solid #000",
+  boxShadow: 24,
+};
 
-const TeamsModal = ({ firstTeam, secondTeam, open, setOpen }) => {
+const TeamsModal = ({ firstTeam, secondTeam, open, setOpen, createTeams }) => {
   return (
     <div>
       <Modal
@@ -17,6 +28,22 @@ const TeamsModal = ({ firstTeam, secondTeam, open, setOpen }) => {
           <div className="teams-container">
             <Team team={firstTeam} />
             <Team team={secondTeam} />
+          </div>
+          <div className="button-resort-container">
+            <Button
+              className="create-button"
+              variant="outlined"
+              sx={{
+                color: green["A700"],
+                "& .MuiButtonBase-root-MuiButton-root": {
+                  border: "1px solid white",
+                },
+              }}
+              endIcon={<ReplayIcon />}
+              onClick={createTeams}
+            >
+              Volver a sortear
+            </Button>
           </div>
         </Box>
       </Modal>
