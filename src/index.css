@@ -84,3 +84,9 @@ input {
 .team {
   width: 30%;
 }
+
+
+/* MATCH CONTAINER */
+.match-container{
+  margin-top: 30px;
+}
