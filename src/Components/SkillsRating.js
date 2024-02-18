@@ -42,6 +42,7 @@ export default function SkillsRating({ setSkill }) {
       <StyledRating
         name="hover-feedback"
         value={value}
+        
         precision={1}
         getLabelText={getLabelText}
         onChange={(event, newValue) => {
