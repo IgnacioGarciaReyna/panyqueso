@@ -9,6 +9,7 @@ import PlayerList from "./Components/PlayerList.tsx";
 import { PlayersListClass } from "./Classes/PlayersListClass.tsx";
 import { green } from "@mui/material/colors";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import Footer from "./Components/Footer.tsx";
 
 function App() {
   const [players, setPlayers] = useState<PlayersListClass>(
@@ -68,6 +69,7 @@ function App() {
       <PlayerList players={players} setPlayers={setPlayers} />
 
       <Match players={players} />
+      <Footer />
     </Container>
   );
 }
