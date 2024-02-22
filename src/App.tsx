@@ -69,7 +69,11 @@ function App() {
       <PlayerList players={players} setPlayers={setPlayers} />
 
       <Match players={players} />
-      <Footer />
+      {/* <footer>
+        <div>
+          <p className="footer-text">Ignacio Garcia Reyna &#9400; 2024</p>
+        </div>
+      </footer> */}
     </Container>
   );
 }
