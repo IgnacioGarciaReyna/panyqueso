@@ -48,33 +48,31 @@ function App() {
   };
 
   return (
-    <Container>
-      <h1 className="app-title">ARMATE LOS TEAMS</h1>
-      <form className="form-submit-player" onSubmit={handleSubmit}>
-        <TextField
-          name="name"
-          id="filled-basic"
-          label="Nombre player"
-          variant="filled"
-          color="success"
-          ref={nameInput}
-        />
-        <button className="add-button" type="submit" name="submit">
-          <Icon sx={{ color: green["A700"] }}>
-            <AddCircleIcon />
-          </Icon>
-        </button>
-      </form>
+    <div className="super-container">
+      <Container>
+        <h1 className="app-title">ARMATE LOS TEAMS</h1>
+        <form className="form-submit-player" onSubmit={handleSubmit}>
+          <TextField
+            name="name"
+            id="filled-basic"
+            label="Nombre player"
+            variant="filled"
+            color="success"
+            ref={nameInput}
+          />
+          <button className="add-button" type="submit" name="submit">
+            <Icon sx={{ color: green["A700"] }}>
+              <AddCircleIcon />
+            </Icon>
+          </button>
+        </form>
 
-      <PlayerList players={players} setPlayers={setPlayers} />
+        <PlayerList players={players} setPlayers={setPlayers} />
 
-      <Match players={players} />
-      {/* <footer>
-        <div>
-          <p className="footer-text">Ignacio Garcia Reyna &#9400; 2024</p>
-        </div>
-      </footer> */}
-    </Container>
+        <Match players={players} />
+      </Container>
+      <Footer />
+    </div>
   );
 }
 

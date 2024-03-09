@@ -33,6 +33,7 @@ const TeamsModal = ({ firstTeam, secondTeam, open, setOpen, createTeams }) => {
             <Button
               className="create-button"
               variant="outlined"
+              style={{fontWeight: "bold"}}
               sx={{
                 color: green["A700"],
                 "& .MuiButtonBase-root-MuiButton-root": {

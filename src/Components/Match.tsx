@@ -6,6 +6,7 @@ import { TeamClass } from "../Classes/TeamClass.tsx";
 import { MatchClass } from "../Classes/MatchClass.tsx";
 import { green } from "@mui/material/colors";
 import TeamsModal from "./TeamsModal.tsx";
+import { DisplaySettings } from "@mui/icons-material";
 
 const Match = ({ players }) => {
   const [firstTeam, setFirstTeam] = useState<TeamClass>();
@@ -21,9 +22,16 @@ const Match = ({ players }) => {
   };
 
   return (
-    <Container className="match-container">
+    <Container
+      className="match-container"
+      style={{ padding: "0", margin: "0 0 60px 0" }}
+    >
       <Button
-        disabled={!players.hasSomePlayer()}
+        style={{
+          display: players.hasSomePlayer() ? "" : "none",
+          margin: "20px 0",
+          fontWeight: "bold"
+        }}
         className="create-button"
         variant="outlined"
         sx={{
