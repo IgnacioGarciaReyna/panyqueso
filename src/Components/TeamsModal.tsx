@@ -3,6 +3,7 @@ import Team from "./Team.tsx";
 import { Box, Button, Modal } from "@mui/material";
 import { green } from "@mui/material/colors";
 import ReplayIcon from "@mui/icons-material/Replay";
+import Example from "./TableDragDrop.js";
 
 const style = {
   position: "absolute" as "absolute",
@@ -29,6 +30,7 @@ const TeamsModal = ({ firstTeam, secondTeam, open, setOpen, createTeams }) => {
             <Team team={firstTeam} />
             <Team team={secondTeam} />
           </div>
+          <Example firstTeam={firstTeam} secondTeam={secondTeam}/>
           <div className="button-resort-container">
             <Button
               className="create-button"
