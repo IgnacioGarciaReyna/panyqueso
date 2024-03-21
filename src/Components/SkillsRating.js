@@ -7,8 +7,8 @@ import { styled } from "@mui/material/styles";
 const labels = {
   1: "Bajo nivel",
   2: "Normal",
-  3: "Bueno",
-  4: "Muy bueno",
+  3: "Buenx",
+  4: "Muy buenx",
   5: "Crack",
 };
 

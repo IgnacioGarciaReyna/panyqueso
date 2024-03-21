@@ -39,4 +39,14 @@ export class MatchClass {
 
     return tuplaTeams;
   };
+
+  public refreshTeams(team1, team2) {
+    const firstTeam = new TeamClass(1);
+    const secondTeam = new TeamClass(2);
+    team1.getPlayers().forEach((player) => firstTeam.addPlayer(player));
+    team2.getPlayers().forEach((player) => secondTeam.addPlayer(player));
+
+    const tuplaTeams: [TeamClass, TeamClass] = [firstTeam, secondTeam];
+    return tuplaTeams;
+  }
 }

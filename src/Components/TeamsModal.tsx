@@ -4,6 +4,7 @@ import { Box, Button, Modal } from "@mui/material";
 import { green } from "@mui/material/colors";
 import ReplayIcon from "@mui/icons-material/Replay";
 import Example from "./TableDragDrop.js";
+import TransferListComp from "./TransferListComp.tsx";
 
 const style = {
   position: "absolute" as "absolute",
@@ -16,7 +17,7 @@ const style = {
   padding: "35px 40px 0 40px" ,
 };
 
-const TeamsModal = ({ firstTeam, secondTeam, open, setOpen, createTeams }) => {
+const TeamsModal = ({ firstTeam, secondTeam, open, setOpen, createTeams, handleTransfer }) => {
   return (
     <div>
       <Modal
@@ -26,11 +27,12 @@ const TeamsModal = ({ firstTeam, secondTeam, open, setOpen, createTeams }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div className="teams-container">
+          {/* <div className="teams-container">
             <Team team={firstTeam} />
             <Team team={secondTeam} />
-          </div>
-          <Example firstTeam={firstTeam} secondTeam={secondTeam}/>
+          </div> */}
+          {/* <Example firstTeam={firstTeam} secondTeam={secondTeam}/> */}
+          <TransferListComp firstTeam={firstTeam} secondTeam={secondTeam} handleTransfer={handleTransfer}/>
           <div className="button-resort-container">
             <Button
               className="create-button"

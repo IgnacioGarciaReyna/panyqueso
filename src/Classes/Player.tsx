@@ -15,8 +15,12 @@ export class Player {
     return this.id;
   }
 
-  public setId(newID: number){
+  public setId(newID: number) {
     this.id = newID;
+  }
+
+  public getName() {
+    return this.name;
   }
 
   public equalSkill(otherPlayer: Player) {
