@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import Team from "./Team.tsx";
+import React from "react";
 import { Box, Button, Modal } from "@mui/material";
 import { green } from "@mui/material/colors";
 import ReplayIcon from "@mui/icons-material/Replay";
-import Example from "./TableDragDrop.js";
 import TransferListComp from "./TransferListComp.tsx";
 
 const style = {
@@ -14,10 +12,17 @@ const style = {
   transform: "translate(-50%, -50%)",
   border: "2px solid #000",
   boxShadow: 24,
-  padding: "35px 40px 0 40px" ,
+  padding: "35px 40px 0 40px",
 };
 
-const TeamsModal = ({ firstTeam, secondTeam, open, setOpen, createTeams, handleTransfer }) => {
+const TeamsModal = ({
+  firstTeam,
+  secondTeam,
+  open,
+  setOpen,
+  createTeams,
+  handleTransfer,
+}) => {
   return (
     <div>
       <Modal
@@ -32,12 +37,16 @@ const TeamsModal = ({ firstTeam, secondTeam, open, setOpen, createTeams, handleT
             <Team team={secondTeam} />
           </div> */}
           {/* <Example firstTeam={firstTeam} secondTeam={secondTeam}/> */}
-          <TransferListComp firstTeam={firstTeam} secondTeam={secondTeam} handleTransfer={handleTransfer}/>
+          <TransferListComp
+            firstTeam={firstTeam}
+            secondTeam={secondTeam}
+            handleTransfer={handleTransfer}
+          />
           <div className="button-resort-container">
             <Button
               className="create-button"
               variant="outlined"
-              style={{fontWeight: "bold"}}
+              style={{ fontWeight: "bold" }}
               sx={{
                 color: green["A700"],
                 "& .MuiButtonBase-root-MuiButton-root": {

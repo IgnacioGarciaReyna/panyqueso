@@ -16,21 +16,15 @@ const Match = ({ players }) => {
   const createTeams = () => {
     setOpen(true);
     const match = new MatchClass(players);
-    const teamsTuple = match.createTeams();
+    let teamsTuple = match.createTeams();
     setFirstTeam(teamsTuple[0]);
     setSecondTeam(teamsTuple[1]);
   };
 
   const handleTransfer = (listId, ids) => {
     if (listId == "first") {
-      console.log("Entró en first. ids: " + ids);
-      console.log(firstTeam?.getPlayersNames());
-
       firstTeam?.handleTransfer(ids, secondTeam);
     } else {
-      console.log("Entró en second. ids : " + ids);
-      console.log(secondTeam?.getPlayersNames());
-
       secondTeam?.handleTransfer(ids, firstTeam);
     }
 

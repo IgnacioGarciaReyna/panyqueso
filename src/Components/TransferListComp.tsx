@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useCallback, useState } from "react";
 import { TransferList, TransferListList } from "react-transfer-list";
 import { Player } from "../Classes/Player";
@@ -17,10 +17,6 @@ const TransferListComp = ({ firstTeam, secondTeam, handleTransfer }) => {
     first: Array.from({ length: 10 }).map((_, i) => String(i + 1)),
   };
 
-  // const initialNames: Record<string, string[]> = {
-  //   first: ,
-  // };
-
   const [ids, setIds] = useState({
     first: firstTeam.getPlayersNames(),
     second: secondTeam.getPlayersNames(),
@@ -33,6 +29,17 @@ const TransferListComp = ({ firstTeam, secondTeam, handleTransfer }) => {
       return { ...orig };
     });
   }, []);
+
+  useEffect(() => {
+    setTimeout(
+      () =>
+        setIds({
+          first: firstTeam.getPlayersNames(),
+          second: secondTeam.getPlayersNames(),
+        }),
+      30
+    );
+  }, [firstTeam]);
 
   return (
     <TransferList ids={ids} onChange={handleChange}>
